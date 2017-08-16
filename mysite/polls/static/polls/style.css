@@ -1,0 +1,11 @@
+-webkit-print-color-adjust:exact;
+
+a {
+    color: green;
+}
+
+body {
+    background-position:center;
+    background-color:yellow;
+    background:url('images/sea_girl.jpg');
+}
