@@ -1,0 +1,7 @@
+{% block footer %}
+    {% if now %}
+    <p style='font-family:微软雅黑;'>Time now: {{ now }}</p>
+    {% else %}
+    <p style='font-family:微软雅黑;'>some warning message</p>
+    {% endif %}
+{% endblock %}
