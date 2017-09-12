@@ -5,6 +5,8 @@ from django.db import models
 
 from django.utils import timezone
 
+from django.contrib.auth.models import User
+
 import datetime
 
 # Create your models here.
@@ -12,6 +14,7 @@ import datetime
 
 
 class Post(models.Model):
+    user = models.CharField(max_length=50,default="guest") # don't use constraint will reduce performance
     title = models.CharField(max_length=200)
     textbody = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
