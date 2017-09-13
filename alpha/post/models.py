@@ -31,4 +31,29 @@ class Post(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
+class Goal(models.Model):
+    TYPE = (
+        ('S','Small goal'),
+        ('M','Medium goal'),
+        ('L','Large goal'),
+        ('P','Planned goal'),
+    )
+    STATUS = (
+        ('N','New'),
+        ('I','Inprogress'),
+        ('C','Completed'),
+    )
+    name = models.CharField(max_length=50)
+    desc = models.CharField(max_length=200)
+    pub_date = models.DateTimeField(default=timezone.now)
+    votes = models.IntegerField(default=0)
+    comment = models.CharField(max_length=200)
+    
+    class Meta:
+        ordering = ('-pub_date',)
 
+    def __unicode__(self):
+        return self.name
+
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
