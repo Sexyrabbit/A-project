@@ -31,6 +31,19 @@ class Post(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
+
+class Product(models.Model):
+    SIZES = (
+        ('S','Smaill'),
+        ('M','Medium'),
+        ('L','Large'),
+    )
+    sku = models.CharField(max_length=5)
+    name = models.CharField(max_length=20)
+    price = models.PositiveIntegerField()
+    size = models.CharField(max_length=1,choices=SIZES)
+
+
 class Goal(models.Model):
     TYPE = (
         ('S','Small goal'),
@@ -46,14 +59,18 @@ class Goal(models.Model):
     name = models.CharField(max_length=50)
     desc = models.CharField(max_length=200)
     pub_date = models.DateTimeField(default=timezone.now)
-    votes = models.IntegerField(default=0)
-    comment = models.CharField(max_length=200)
-    
+    status = models.CharField(max_length=1,choices=STATUS,default='N')
+    types = models.CharField(max_length=1,choices=TYPE,default='S')
+
     class Meta:
         ordering = ('-pub_date',)
+
+    def was_published_recently(self):
+        return self.pub_date >=timezone.now() - datetime.timedelta(days=1)
 
     def __unicode__(self):
         return self.name
 
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+
+
