@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Post,Goal
+from .models import Post,Goal,Product
 
 # Register your models here.
 
@@ -13,6 +13,6 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Post,PostAdmin)
 admin.site.register(Goal)
-
+admin.site.register(Product)
 
 
