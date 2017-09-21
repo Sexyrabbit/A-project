@@ -52,3 +52,11 @@ def listing(request):
 </html>
 '''
     products = Product.objects.all()
+    tags = '<tr><td>Class Name</td><td>Price</td><td>Available class</td></tr>'
+    for p in products:
+        tags = tags + '<tr><td>{}</td>'.format(p.name)
+        tags = tags + '<td>{}</td>'.format(p.price)
+        tags = tags + '<td>{}</td></tr>'.format(p.sku)
+    return HttpResponse(html.format(tags))
+
+
