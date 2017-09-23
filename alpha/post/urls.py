@@ -9,5 +9,6 @@ from . import views
 urlpatterns = [
     url(r'^$',views.index,name='index'),
     url(r'^about/',views.about),
-    url(r'^list/',views.listing),
+    url(r'^list/$',views.listing),
+    url(r'^list/([0-9a-zA-Z]+)/$',views.disp_detail),
 ]
