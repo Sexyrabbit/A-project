@@ -6,11 +6,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse,Http404
 
-from django.template.loader import get_template
-
 from .models import Product
-
-import random
 
 # Create your views here.
 
@@ -18,14 +14,26 @@ def index(request):
     return HttpResponse("hello, this is only a test")
 
 
+
+
+
 def about(request):
-    template = get_template('post/about.html')
-    quotes = [ 'Some pressure is given by yourself and you can use it to be extra time effective',
-        'Remember to Gamelize your project',
-        'Live as if it\'s a game',
-        'You are empowering yourself', ]
-    html = template.render({'quote':random.choice(quotes)})
+    html = '''
+<!DOCTYPE html>
+<html>
+<head><title>About this project</title></head>
+<body>
+<h2>A Social Network for specific ppl</h2>
+<hr>
+<p>
+This is a test version, disclosable for internal user
+</p>
+</body>
+</html>
+'''
+
     return HttpResponse(html)
+
 
 def listing(request):
     html = '''
