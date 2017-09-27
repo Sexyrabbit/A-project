@@ -15,71 +15,38 @@ import random
 # Create your views here.
 
 def index(request):
-    return HttpResponse("hello, this is only a test")
-
+    template = get_template('post/index.html')
+    quotes = [ 'Jason is the king of Sun',
+         'Nobody ever question that how awesome and cool Jason is',
+         'Lao-zi once said, everyone should learn from Jason, yeah,jjjjj',
+         'If you are poor, you should realize, money wasn\'t come from sky, money is come from bank,.', ]
+    html = template.render({'quote':random.choice(quotes)})
+    return HttpResponse(html)
 
 def about(request):
     template = get_template('post/about.html')
-    quotes = [ 'Some pressure is given by yourself and you can use it to be extra time effective',
-        'Remember to Gamelize your project',
-        'Live as if it\'s a game',
-        'You are empowering yourself', ]
+    quotes = [ 'Jason is the king of Sun',
+        'Nobody ever question that how awesome and cool Jason is',
+        'Lao-zi once said, everyone should learn from Jason, yeah,jjjjj',
+        'If you are poor, you should realize, money wasn\'t come from sky, money is come from bank,.', ]
     html = template.render({'quote':random.choice(quotes)})
     return HttpResponse(html)
 
 def listing(request):
-    html = '''
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='utf-8'>
-<title>Product list</title>
-</head>
-<body>
-<h2>Below list the training classes available for select</h2>
-<hr>
-<table width=400 border=1 bgcolor='%ccffcc'>
-{}
-</table>
-</body>
-</html>
-'''
     products = Product.objects.all()
-    tags = '<tr><td>Class Name</td><td>Price</td><td>Available class</td></tr>'
-    for p in products:
-        tags = tags + '<tr><td>{}</td>'.format(p.name)
-        tags = tags + '<td>{}</td>'.format(p.price)
-        tags = tags + '<td>{}</td></tr>'.format(p.sku)
-    return HttpResponse(html.format(tags))
-
+    template = get_template('post/list.html')
+    html = template.render({'products':products})
+    return HttpResponse(html)
 
 
 
 def disp_detail(request, id_number):
-    html = '''
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='utf-8'>
-<title>{}</title>
-</head>
-<body>
-<h2>{}</h2>
-<hr>
-<table width=400 border=1 bgcolor='#ccffcc'>
-{}
-</table>
-<a href='/post/list'>Return</a>
-</body>
-</html>
-'''
     try:
         p = Product.objects.get(id=id_number)
     except Product.DoesNotExist:
         raise Http404('Didn\'t find the product')
-    tags = '<tr><td>Product id</td><td>{}</td></tr>'.format(p.id)
-    tags = tags + '<tr><td>Product name</td><td>{}</td></tr>'.format(p.name)
-    tags = tags + '<tr><td>Product price</td><td>{}</td></tr>'.format(p.price)
-    tags = tags + '<tr><td>Available number</td><td>{}</td></tr>'.format(p.sku)
-    return HttpResponse(html.format(p.name,p.name,tags))
+    template = get_template('post/disp.html')
+    html = template.render({'product': p})
+    
+    return HttpResponse(html)
 

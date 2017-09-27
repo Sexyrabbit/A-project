@@ -3,13 +3,16 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<title>{{ pname }}</title>
+<title>{{ product.name }}</title>
 </head>
 <body>
-<h2>{{ pname }}</h2>
+<h2>{{ product.name }}</h2>
 <hr>
 <table width=400 border=1 bgcolor='#ccffcc'>
-{{ tags }}
+<tr><td>Product id</td><td>{{ product.id }}</td></tr>
+<tr><td>Product name</td><td>{{ product.name }}</td></tr>
+<tr><td>Product price</td><td>{{ product.price }}</td></tr>
+<tr><td>Available number</td><td>{{ product.sku }}</td></tr>
 </table>
 <a href='/post/list'>Back</a>
 </body>

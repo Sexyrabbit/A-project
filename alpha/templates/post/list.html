@@ -1,0 +1,24 @@
+<!-- list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Class list</title>
+</head>
+<body>
+<h2>Below are list of available classes for now</h2>
+<hr>
+<table width=400 border=1 bgcolor='#ccffcc'>
+    <tr><td>Product name</td><td>Price</td><td>Number Left</td></tr>
+{% for p in products %}
+    <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.sku }}</td>
+    </tr>
+{% endfor %}
+</table>
+<hr>
+<a href='/post'>Back</a>
+</body>
+</html>
