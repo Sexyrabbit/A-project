@@ -14,6 +14,16 @@ import random
 
 # Create your views here.
 
+def errorpage(request):
+    return HttpResponse("This is error page")
+
+def homepage(request):
+    return HttpResponse("This is test homepage")
+
+def post_bytime(request,year,month,day,post_id):
+    html = "<h2>Posted on date{}/{}/{}, post id: {}</h2><hr>".format(year,month,day,post_id)
+    return HttpResponse(html)
+
 def index(request):
     template = get_template('post/index.html')
     quotes = [ 'Jason is the king of Sun',
