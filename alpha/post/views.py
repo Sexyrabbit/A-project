@@ -8,6 +8,8 @@ from django.http import HttpResponse,Http404
 
 from django.template.loader import get_template
 
+from datetime import datetime
+
 from .models import Product
 
 import random
@@ -17,11 +19,18 @@ import random
 def errorpage(request):
     return HttpResponse("This is error page")
 
-def homepage(request):
-    return HttpResponse("This is test homepage")
+def homepage(request, tvno='0'):
+    tv_list = [{'name':'Video Example one','tvcode':'5583507&ref=http://www.acfun.cn/v/ac3977842_6'},
+        {'name':'Video Example two','tvcode':'5583511&ref=http://www.acfun.cn/v/ac3977842_5'},]
+    template = get_template('post/homepage.html')
+    now = datetime.now()
+    tvno = tvno
+    tv = tv_list[int(tvno)]
+    html = template.render(locals())
+    return HttpResponse(html)
 
-def post_bytime(request,year,month,day,post_id):
-    html = "<h2>Posted on date{}/{}/{}, post id: {}</h2><hr>".format(year,month,day,post_id)
+def post_bytime(request,year,month,day,post_id='0'):
+    html = "<h2>Posted on date{}/{}/{}, post id: {}</h2><hr>".format(year,month,day,int(post_id))
     return HttpResponse(html)
 
 def index(request):

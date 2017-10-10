@@ -19,6 +19,7 @@ from post import views
 
 urlpatterns = [
     url(r'^$', views.homepage),
+    url(r'^(\d{1})/$', views.homepage, name='tv-url'),
     url(r'^post/', include('post.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'', views.errorpage),
