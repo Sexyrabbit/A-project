@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^(\d{1})/$', views.homepage, name='tv-url'),
     url(r'^post/', include('post.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'', views.errorpage),
+   # url(r'', views.errorpage),
 ]
