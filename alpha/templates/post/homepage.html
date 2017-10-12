@@ -18,8 +18,13 @@
 <body>
     <nav class="navbar navbar-default" role="navigation">
         <div class='container-fluid'>
-            <div class='navbar-header'>
+            <!--<div class='navbar-header'>
                 <a class='navbar-brand' href='#'>Now showing {{tv.name}}</a>
+            </div>-->
+            <div class='navbar-brand' align=center>
+                {% load staticfiles %}
+                <img src="{% static "images/b.jpg" %}" width=60>
+                {{tv.name}}
             </div>
             <ul class='nav navbar-nav'>
                 <li class='active'><a href='/'>Home</a></li>
