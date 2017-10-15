@@ -19,9 +19,24 @@ import random
 def errorpage(request):
     return HttpResponse("This is error page")
 
+def zhibo(request, tvno='0'):
+    tv_list = [{'name':'Learn to love','tvcode':'643871'},
+        {'name':'Love episode 1','tvcode':'625676'},
+        {'name':'Fak episode 1','tvcode':'697872'},
+        {'name':'Big tight ass','tvcode':'424998'},
+    ]
+    template = get_template('post/zhibo.html')
+    now = datetime.now()
+    tvno = tvno
+    tv = tv_list[int(tvno)]
+    html = template.render(locals())
+    return HttpResponse(html)
+
+
+
 def homepage(request, tvno='0'):
-    tv_list = [{'name':'Video Example one','tvcode':'5583507&ref=http://www.acfun.cn/v/ac3977842_6'},
-        {'name':'Video Example two','tvcode':'5583511&ref=http://www.acfun.cn/v/ac3977842_5'},]
+    tv_list = [{'name':'Video Example one','tvcode':'aid=8705995&page=1'},
+        {'name':'Video Example two','tvcode':'aid=8705995&page=1'},]
     template = get_template('post/homepage.html')
     now = datetime.now()
     tvno = tvno

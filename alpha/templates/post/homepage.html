@@ -1,54 +1,18 @@
 <!-- homepage.html -->
-<!DOCTYPE html>
-<html>
-<head>
-   <meta charset='utf-8'>
-    <title>Home Page</title>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<body>
-    <nav class="navbar navbar-default" role="navigation">
-        <div class='container-fluid'>
-            <!--<div class='navbar-header'>
-                <a class='navbar-brand' href='#'>Now showing {{tv.name}}</a>
-            </div>-->
-            <div class='navbar-brand' align=center>
-                {% load staticfiles %}
-                <img src="{% static "images/b.jpg" %}" width=60>
-                {{tv.name}}
-            </div>
-            <ul class='nav navbar-nav'>
-                <li class='active'><a href='/'>Home</a></li>
-                <li><a href='{% url "tv-url" 0 %}'>Video one</a></li>
-                <li><a href='{% url "tv-url" 1 %}'>Video two</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
-        <div id='tvcode' align='center'>
-<!--
-            <iframe style="width:704px;height:436px;" src="http://cdn.aixifan.com/player/ACFlashPlayer.out.swf?vid={{tv.tvcode}}" id="ACFlashPlayer-re" frameborder="0"></iframe>
-<-->
-        </div>
-	<div align='center'>
-<!--
-            <embed height="348",width="550",class="player",allowFullScreenInteractive="true",pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash",AllowScriptAccess="always",rel="noreferrer",flashvars="vid=5583507&ref=http://www.acfun.cn/v/ac3977842_6",src="http://cdn.aixifan.com/player/ACFlashPlayer.out.swf?vid=5583507&ref=http://www.acfun.cn/v/ac3977842_6",type="application/x-shockwave-flash",allowfullscreen="true",quality="high",wmode="window"></embed>
--->
-<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=15220348&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-        </div>
+{% extends "post/base.html" %}
+{% block title %} Video Example {% endblock %}
+{% block tvname %} {{ tv.name }} {% endblock %}
+{% block menu %}
+    <ul class='nav navbar-nav'>
+        <li class='active'><a href='/'>Home</a></li>
+        <li><a href='{% url "tv-url" 0 %}'> CCAV </a></li>
+        <li><a href='{% url "tv-url" 1 %}'> HBO </a></li>
+    </ul>
+{% endblock %}
+{% block content %}
+<div class='container'>
+    <div id='tvcode' align='center'>
+<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="{{tv.tvcode}}" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
     </div>
-<div class="panel panel-defaut">
-        <div class="panel-footer"><em>{{ now }}</div>
 </div>
-</body>
-</html>
-
+{% endblock %}

@@ -1,0 +1,21 @@
+<!-- zhibo.html -->
+{% extends "post/base.html" %}
+{% block title %} For Adults Only {% endblock %}
+{% block tvname %} {{ tv.name }} {% endblock %}
+{% block menu %}
+    <ul class='nav navbar-nav'>
+        <li class='active'><a href='/'>Home</a></li>
+        <li><a href='{% url "zhibo-url" 0 %}'>Tits and Butts 1</a></li>
+        <li><a href='{% url "zhibo-url" 1 %}'>Love and Tits 1</a></li>
+        <li><a href='{% url "zhibo-url" 2 %}'>Got to find it </a></li>
+        <li><a href='{% url "zhibo-url" 3 %}'>What a girl </a></li>
+    </ul>
+{% endblock %}
+{% block content %}
+<div class='container'>
+    <div id='tvcode' align='center'>
+<embed width="640" height="360" allownetworking="all" allowscriptaccess="always" src="https://staticlive.douyucdn.cn/common/share/play.swf?room_id={{ tv.tvcode }}" quality="high" bgcolor="#000" wmode="window" allowfullscreen="true" allowFullScreenInteractive="true" type="application/x-shockwave-flash">
+    </div>
+</div>
+{% endblock %}
+
