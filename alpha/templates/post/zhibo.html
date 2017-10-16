@@ -14,6 +14,15 @@
 {% block content %}
 <div class='container'>
     <div id='tvcode' align='center'>
+    {{ hour }}
+    {% if hour > 12 %}
+    夜深人静，小撸怡情，强撸伤身
+    {% elif hour < 8 %}
+    早起的鸟儿有虫吃，早点起来玩游戏，有益身心健康
+    {% endif %}
+    </div>
+    <br>
+    <div id='tvcode' align='center'>
 <embed width="640" height="360" allownetworking="all" allowscriptaccess="always" src="https://staticlive.douyucdn.cn/common/share/play.swf?room_id={{ tv.tvcode }}" quality="high" bgcolor="#000" wmode="window" allowfullscreen="true" allowFullScreenInteractive="true" type="application/x-shockwave-flash">
     </div>
 </div>

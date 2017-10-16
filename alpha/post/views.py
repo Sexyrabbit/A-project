@@ -27,6 +27,7 @@ def zhibo(request, tvno='0'):
     ]
     template = get_template('post/zhibo.html')
     now = datetime.now()
+    hour = now.timetuple().tm_hour
     tvno = tvno
     tv = tv_list[int(tvno)]
     html = template.render(locals())
