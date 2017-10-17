@@ -5,8 +5,13 @@
 {% block menu %}
     <ul class='nav navbar-nav'>
         <li class='active'><a href='/'>Home</a></li>
-        <li><a href='{% url "tv-url" 0 %}'> CCAV </a></li>
-        <li><a href='{% url "tv-url" 1 %}'> HBO </a></li>
+        {% for t in tv_list %}
+        <li>
+            <a href='{% url "tv-url" forloop.counter0 %}'>
+                {{ t.name }}
+            </a>
+        </li>
+        {% endfor %}
     </ul>
 {% endblock %}
 {% block content %}
