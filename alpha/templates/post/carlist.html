@@ -1,0 +1,34 @@
+<!-- carlist.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = 'utf-8'>
+    <title>Second Hand Car</title>
+</head>
+<body>
+    <h2> Welcome to second hand car </h2>
+    <table>
+        <tr>
+    {% for m in car_maker %}
+        <td bgcolor="#ccffcc">
+            <a href='{% url "carlist-url" forloop.counter0 %}'>{{ m }}</a>
+        </td>
+    {% endfor %}
+        </tr>
+    </table>
+    {% for c in cars %}
+        {% if forloop.first %}
+    <table>
+        <tr><td>Car brand</td><td>Car serie</td></tr>
+        {% endif %}
+        <tr bgcolor="{% cycle '#eeeeee' '#cccccc' %}">
+        <td>{{ maker_name }}</td><td>{{ c }}</td>
+        </tr>
+    {% if forloop.last %}
+    </table>
+    {% endif %}
+    {% empty %}
+    <h3>Sorry, for <em>{{maker_name}}</em> currently have no storage</h3>
+    {% endfor %}
+</body>
+</html>

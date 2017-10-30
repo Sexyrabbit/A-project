@@ -85,3 +85,21 @@ def disp_detail(request, id_number):
     
     return HttpResponse(html)
 
+
+
+def carlist(request, maker='0'):
+    car_maker = ['SAAB','Ford','Honda','Mazda','Nissan','Toyota']
+    car_list = [ [],
+        ['Fiesta','Focus','Modeo','EcoSport','Kuga','Mustang'],
+        ['Fit','Odyssey','CR-V','City','NSX'],
+        ['Mazda3','Mazda5','Mazda6','CX-3','CX-5','MX-5'],
+        ['Tida','March','Livina','Sentra','Teana','X-Trail','Juke','Murano'],
+        ['Camry','Altis','Yaris','86','Prius','Vios','RAV4','Wish']
+    ]
+    maker = int(maker)
+    maker_name = car_maker[maker]
+    cars = car_list[maker]
+    template = get_template('post/carlist.html')
+    html = template.render(locals())
+    
+    return HttpResponse(html)

@@ -20,6 +20,8 @@ from post import views
 urlpatterns = [
     url(r'^$', views.homepage),
     url(r'^(\d{1})/$', views.homepage, name='tv-url'),
+    url(r'^carlist/$', views.carlist),
+    url(r'^carlist/(\d{1})/$', views.carlist, name='carlist-url'),
     url(r'zhibo/$', views.zhibo),
     url(r'zhibo/(\d{1})/$', views.zhibo, name='zhibo-url'),
     url(r'^post/', include('post.urls')),
