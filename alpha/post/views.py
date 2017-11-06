@@ -120,7 +120,7 @@ def carprice(request, maker='0'):
     maker = int(maker)
     maker_name = car_maker[maker] 
     cars = car_list[maker]
-    template = get_template('carprice.html')
+    template = get_template('post/carprice.html')
     html = template.render(locals())
 
     return HttpResponse(html)

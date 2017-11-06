@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^(\d{1})/$', views.homepage, name='tv-url'),
     url(r'^carlist/$', views.carlist),
     url(r'^carlist/(\d{1})/$', views.carlist, name='carlist-url'),
+    url(r'^carprice/$', views.carprice),
+    url(r'^carprice/(\d{1})/$', views.carprice,name='carprice-url'),
     url(r'zhibo/$', views.zhibo),
     url(r'zhibo/(\d{1})/$', views.zhibo, name='zhibo-url'),
     url(r'^post/', include('post.urls')),
