@@ -4,5 +4,26 @@
 {% block content %}
 <div class='container' align=center>
 <!-- This is what -->
+{% for p in products %}
+{% if forloop.first %}
+<table>
+    <tr bgcolor='#cccccc'>
+        <td width=250>Secondhand mobile</td>
+        <td width=150>Brand/Serie</td>
+        <td width=50>DateOfProduce</td>
+        <td>Price</td></tr>
+{% endif %}
+    <tr bgcolor='{% cycle "#ffccff" "#ccffcc" %}'>
+        <td>{{ p.nickname }}</td>
+        <td>{{ p.pmodel.maker.name }}/{{ p.model }}</td>
+        <td>{{ p.year }}</td>
+        <td align=right>{{ p.price }}</td>
+    </tr>
+{% if forloop.last %}
+</table>
+{% endif %}
+{% empty %}
+<h3>Currently we are getting products from Mars, please queue in the line and be patient</h3>
+{% endfor %}
 </div>
 {% endblock %}
